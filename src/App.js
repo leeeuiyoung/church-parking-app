@@ -446,8 +446,13 @@ const FormItem = ({ icon: IconComponent, label, children }) => (
   </div>
 );
 
-const Th = ({ children, className = '' }) => <th scope="col" className={`px-6 py-4 text-left text-sm font-semibold text-slate-600 uppercase tracking-wider ${className}`}>{children}</th>;
-const Td = ({ children, className = '' }) => <td className={`px-6 py-5 whitespace-nowrap text-base text-slate-700 ${className}`}>{children}</td>;
+function Th({ children, className = '' }) {
+  return <th scope="col" className={`px-6 py-4 text-left text-sm font-semibold text-slate-600 uppercase tracking-wider ${className}`}>{children}</th>;
+}
+
+function Td({ children, className = '' }) {
+  return <td className={`px-6 py-5 whitespace-nowrap text-base text-slate-700 ${className}`}>{children}</td>;
+}
 
 function QueryPage({ db, userId, isAuthReady, setDbError }) {
   const [searchName, setSearchName] = useState('');
