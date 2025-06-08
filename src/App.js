@@ -1,9 +1,9 @@
 // Trigger deploy
-import React, { useState, useEffect, useCallback } from 'react';
-// import { initializeApp } from 'firebase/app';
+import React, { useState, useEffect } from 'react';
+import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, addDoc, getDocs, query, where, serverTimestamp, setLogLevel, deleteDoc, doc } from 'firebase/firestore';
 import { getAuth, signInAnonymously, onAuthStateChanged, signInWithCustomToken } from 'firebase/auth';
-import { Save, Search, CalendarDays, Users, DollarSign, Clock, Building, Banknote, UserCircle, FileText, Trash2, AlertTriangle, ListChecks, Download, ChevronsUpDown, Check, X, Sparkles, Copy, Loader2, MapPin } from 'lucide-react';
+import { Save, Search, CalendarDays, Users, DollarSign, Clock, Building, Banknote, UserCircle, FileText, Trash2, AlertTriangle, ListChecks, Download, X, Sparkles, Copy, Loader2 } from 'lucide-react';
 
 // Firebase 구성 (실제 값은 환경에 따라 제공됨)
 const firebaseConfig = {
@@ -213,7 +213,7 @@ function EntryForm({
       };
       fetchParkingRecords();
     }
-  }, [db, userId, isAuthReady, appId, setDbError]);
+  }, [db, userId, isAuthReady, setDbError]);
 
 
   const handleNameChange = (e) => {
@@ -446,10 +446,19 @@ const FormItem = ({ icon: IconComponent, label, children }) => (
   </div>
 );
 
-const Th = ({ children, className = '' }) => <th scope="col" className={`px-6 py-4 text-left text-sm font-semibold text-slate-600 uppercase tracking-wider ${className}`}>{children}</th>;
-const Td = ({ children, className = '' }) => <td className={`px-6 py-5 whitespace-nowrap text-base text-slate-700 ${className}`}>{children}</td>;
+
 
 function QueryPage({ db, userId, isAuthReady, setDbError }) {
+  //
+  function Th({ children, className = '' }) {
+  return <th scope="col" className={`px-6 py-4 text-left text-sm font-semibold text-slate-600 uppercase tracking-wider ${className}`}>{children}</th>;
+}
+
+function Td({ children, className = '' }) {
+  return <td className={`px-6 py-5 whitespace-nowrap text-base text-slate-700 ${className}`}>{children}</td>;
+}
+//
+
   const [searchName, setSearchName] = useState('');
   const [searchStartDate, setSearchStartDate] = useState('');
   const [searchEndDate, setSearchEndDate] = useState('');
