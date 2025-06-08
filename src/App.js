@@ -213,7 +213,7 @@ function EntryForm({
       };
       fetchParkingRecords();
     }
-  }, [db, userId, isAuthReady, appId, setDbError]);
+  }, [db, userId, isAuthReady, setDbError]);
 
 
   const handleNameChange = (e) => {
